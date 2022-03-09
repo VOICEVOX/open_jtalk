@@ -105,7 +105,7 @@ if(HTS_ENGINE_INCLUDE_DIR AND HTS_ENGINE_LIB)
   target_link_libraries(openjtalk ${HTS_ENGINE_LIB})
   include_directories(openjtalk ${HTS_ENGINE_INCLUDE_DIR})
 else()
-  message(FATAL_ERROR "Required HTSEngine not found")
+  message("Required HTSEngine not found")
 endif()
 
 # configuration for charset

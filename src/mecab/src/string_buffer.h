@@ -84,7 +84,7 @@ class StringBuffer {
   StringBuffer& operator<<(long int n)           { _ITOA(n); }
   StringBuffer& operator<<(unsigned short int n) { _UITOA(n); }
   StringBuffer& operator<<(unsigned int n)       { _UITOA(n); }
-#ifdef _M_X64 /* for only 64bit compiler of vs2010 */
+#if defined(_M_X64) || defined(_M_ARM64) /* for only 64bit compiler of vs2010 */
   StringBuffer& operator<<(size_t n)             { _UITOA(n); }
 #endif
   StringBuffer& operator<<(unsigned long int n)  { _UITOA(n); }

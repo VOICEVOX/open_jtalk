@@ -141,10 +141,7 @@ void text2mecab(char *output, const char *input)
 
 errno_t text2mecab_s(char *output, size_t sizeOfOutput, const char *input)
 {
-   if (output == NULL && sizeOfOutput > 0)
-      return EINVAL;
-
-   if (input == NULL)
+   if (input == NULL || output == NULL || sizeOfOutput == 0)
       return EINVAL;
 
    int i, j;
@@ -165,8 +162,10 @@ errno_t text2mecab_s(char *output, size_t sizeOfOutput, const char *input)
          /* convert */
          s += e;
          str = text2mecab_conv_list[i + 1];
-         if (index + strlen(str) >= sizeOfOutput)
+         if (index + strlen(str) >= sizeOfOutput) {
+            output[0] = '\0';
             return ERANGE;
+         }
          for (j = 0; str[j] != '\0'; j++)
             output[index++] = str[j];
       } else if (text2mecab_control_range[0] <= str[0] && str[0] <= text2mecab_control_range[1]) {
@@ -182,8 +181,10 @@ errno_t text2mecab_s(char *output, size_t sizeOfOutput, const char *input)
             }
          }
          if (e > 0) {
-            if (index + e >= sizeOfOutput)
+            if (index + e >= sizeOfOutput) {
+               output[0] = '\0';
                return ERANGE;
+            }
             for (j = 0; j < e; j++)
                output[index++] = input[s++];
          } else {

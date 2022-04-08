@@ -141,17 +141,17 @@ void text2mecab(char *output, const char *input)
 
 errno_t text2mecab_s(char *output, size_t sizeOfOutput, const char *input)
 {
-   int i, j;
-   const int length = strlen(input);
-   const char *str;
-   int index = 0;
-   int s, e = -1;
-
    if (output == NULL && sizeOfOutput > 0)
       return EINVAL;
 
    if (input == NULL)
       return EINVAL;
+
+   int i, j;
+   const int length = strlen(input);
+   const char *str;
+   int index = 0;
+   int s, e = -1;
 
    for (s = 0; s < length;) {
       str = &input[s];

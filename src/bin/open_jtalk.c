@@ -172,7 +172,10 @@ static int Open_JTalk_synthesis(Open_JTalk * open_jtalk, const char *txt, FILE *
    int result = 0;
    char buff[MAXBUFLEN];
 
-   text2mecab(buff, txt);
+   errno_t mecab_result = text2mecab(buff, MAXBUFLEN, txt);
+   if (mecab_result != 0) {
+      return 0;
+   }
    Mecab_analysis(&open_jtalk->mecab, buff);
    mecab2njd(&open_jtalk->njd, Mecab_get_feature(&open_jtalk->mecab),
              Mecab_get_size(&open_jtalk->mecab));

@@ -51,8 +51,7 @@
 
 TEXT2MECAB_H_START;
 
-void text2mecab(char *output, const char *input);
-errno_t text2mecab_s(char *output, size_t sizeOfOutput, const char *input);
+errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input);
 
 TEXT2MECAB_H_END;
 

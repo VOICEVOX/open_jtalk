@@ -151,7 +151,6 @@ errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
    return 0;
 }
 
-
 TEXT2MECAB_C_END;
 
 #endif                          /* !TEXT2MECAB_C */

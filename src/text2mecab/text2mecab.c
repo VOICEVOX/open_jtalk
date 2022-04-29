@@ -92,10 +92,10 @@ static int strtopcmp(const char *str, const char *pattern)
    }
 }
 
-errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
+text2mecab_result_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
 {
    if (input == NULL || output == NULL || sizeOfOutput == 0)
-      return EINVAL;
+      return TEXT2MEACB_RESULT_INVALID_ARGUMENT;
 
    int i, j;
    const int length = strlen(input);
@@ -117,7 +117,7 @@ errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
          str = text2mecab_conv_list[i + 1];
          if (index + strlen(str) >= sizeOfOutput) {
             output[0] = '\0';
-            return ERANGE;
+            return TEXT2MECAB_RESULT_RANGE_ERROR;
          }
          for (j = 0; str[j] != '\0'; j++)
             output[index++] = str[j];
@@ -136,7 +136,7 @@ errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
          if (e > 0) {
             if (index + e >= sizeOfOutput) {
                output[0] = '\0';
-               return ERANGE;
+               return TEXT2MECAB_RESULT_RANGE_ERROR;
             }
             for (j = 0; j < e; j++)
                output[index++] = input[s++];
@@ -148,7 +148,7 @@ errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
       }
    }
    output[index] = '\0';
-   return 0;
+   return TEXT2MECAB_RESULT_SUCCESS;
 }
 
 TEXT2MECAB_C_END;

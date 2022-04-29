@@ -51,7 +51,13 @@
 
 TEXT2MECAB_H_START;
 
-errno_t text2mecab(char *output, size_t sizeOfOutput, const char *input);
+typedef enum {
+    TEXT2MECAB_RESULT_SUCCESS = 0,
+    TEXT2MEACB_RESULT_INVALID_ARGUMENT = 1,
+    TEXT2MECAB_RESULT_RANGE_ERROR = 2,
+} text2mecab_result_t;
+
+text2mecab_result_t text2mecab(char *output, size_t sizeOfOutput, const char *input);
 
 TEXT2MECAB_H_END;
 

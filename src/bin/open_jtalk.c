@@ -172,8 +172,8 @@ static int Open_JTalk_synthesis(Open_JTalk * open_jtalk, const char *txt, FILE *
    int result = 0;
    char buff[MAXBUFLEN];
 
-   errno_t mecab_result = text2mecab(buff, MAXBUFLEN, txt);
-   if (mecab_result != 0) {
+   text2mecab_result_t mecab_result = text2mecab(buff, MAXBUFLEN, txt);
+   if (mecab_result != TEXT2MECAB_SUCCESS) {
       return 0;
    }
    Mecab_analysis(&open_jtalk->mecab, buff);

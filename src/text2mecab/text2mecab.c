@@ -95,7 +95,7 @@ static int strtopcmp(const char *str, const char *pattern)
 text2mecab_result_t text2mecab(char *output, size_t sizeOfOutput, const char *input)
 {
    if (input == NULL || output == NULL || sizeOfOutput == 0)
-      return TEXT2MEACB_RESULT_INVALID_ARGUMENT;
+      return TEXT2MECAB_RESULT_INVALID_ARGUMENT;
 
    int i, j;
    const int length = strlen(input);

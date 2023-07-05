@@ -197,3 +197,7 @@ class wlog {
 "(" << __LINE__ << ") [" << #condition << "] "
 
 #endif  // MECAB_COMMON_H_
+
+#ifndef thread_local
+#define thread_local __thread
+#endif

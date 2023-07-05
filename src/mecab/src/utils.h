@@ -38,6 +38,8 @@ typedef unsigned __int64 uint64_t;
 
 namespace MeCab {
 
+extern thread_local bool quiet_mode;
+
 class Param;
 
 enum { EUC_JP, CP932, UTF8, UTF16, UTF16LE, UTF16BE, ASCII };

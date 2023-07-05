@@ -193,7 +193,7 @@ class wlog {
       __FILE__ << "(" << __LINE__ << ") [" << #condition << "] "
 
 #define CHECK_DIE(condition) \
-(condition) ? 0 : die() & std::cerr << __FILE__ << \
+(MeCab::quiet_mode || (condition)) ? 0 : die() & std::cerr << __FILE__ << \
 "(" << __LINE__ << ") [" << #condition << "] "
 
 #endif  // MECAB_COMMON_H_

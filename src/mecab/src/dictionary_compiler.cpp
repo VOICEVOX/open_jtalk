@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include "char_property.h"
+#include "common.h"
 #include "connector.h"
 #include "dictionary.h"
 #include "dictionary_rewriter.h"
@@ -19,6 +20,8 @@
 #endif
 
 namespace MeCab {
+
+thread_local bool quiet_mode = false;
 
 class DictionaryComplier {
  public:
@@ -48,6 +51,7 @@ class DictionaryComplier {
       { "posid",     'p',  0,   0,   "assign Part-of-speech id" },
       { "node-format", 'F', 0,  "STR",
         "use STR as the user defined node format" },
+      { "quiet",     'q',  0,   0,   "don't print progresses or errors"  },
       { "version",   'v',  0,   0,   "show the version and exit."  },
       { "help",      'h',  0,   0,   "show this help and exit."  },
       { 0, 0, 0, 0 }
@@ -74,7 +78,10 @@ class DictionaryComplier {
     bool opt_model = param.get<bool>("build-model");
     bool opt_assign_user_dictionary_costs = param.get<bool>
         ("assign-user-dictionary-costs");
+    bool opt_quiet = param.get<bool>("quiet");
     const std::string userdic = param.get<std::string>("userdic");
+
+    MeCab::quiet_mode = opt_quiet;
 
 #define DCONF(file) create_filename(dicdir, std::string(file)).c_str()
 #define OCONF(file) create_filename(outdir, std::string(file)).c_str()
@@ -108,7 +115,8 @@ class DictionaryComplier {
       if (opt_charcategory || opt_unknown) {
         CharProperty::compile(DCONF(CHAR_PROPERTY_DEF_FILE),
                               DCONF(UNK_DEF_FILE),
-                              OCONF(CHAR_PROPERTY_FILE));
+                              OCONF(CHAR_PROPERTY_FILE),
+                              opt_quiet);
       }
 
       if (opt_unknown) {
@@ -124,8 +132,10 @@ class DictionaryComplier {
                                 DCONF(MODEL_DEF_FILE),
                                 OCONF(MODEL_FILE));
         } else {
-          std::cout << DCONF(MODEL_DEF_FILE)
-                    << " is not found. skipped." << std::endl;
+          if (!opt_quiet) {
+            std::cout << DCONF(MODEL_DEF_FILE)
+                      << " is not found. skipped." << std::endl;
+          }
         }
       }
 
@@ -141,7 +151,9 @@ class DictionaryComplier {
       }
     }
 
-    std::cout << "\ndone!\n";
+    if (!opt_quiet) {
+      std::cout << "\ndone!\n";
+    }
 
     return 0;
   }

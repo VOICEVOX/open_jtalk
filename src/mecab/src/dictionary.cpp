@@ -134,7 +134,8 @@ void Dictionary::close() {
 bool Dictionary::assignUserDictionaryCosts(
     const Param &param,
     const std::vector<std::string> &dics,
-    const char *output) {
+    const char *output,
+    bool quiet) {
   Connector matrix;
   DictionaryRewriter rewriter;
   DecoderFeatureIndex fi;
@@ -319,7 +320,8 @@ bool Dictionary::compile(const Param &param,
       }
     }
 
-    std::cout << "reading " << dics[i] << " ... ";
+    if (!MeCab::quiet_mode)
+      std::cout << "reading " << dics[i] << " ... ";
 
     scoped_fixed_array<char, BUF_SIZE> line;
     size_t num = 0;
@@ -455,7 +457,8 @@ bool Dictionary::compile(const Param &param,
       ++lexsize;
     }
 
-    std::cout << num << std::endl;
+    if (!MeCab::quiet_mode)
+      std::cout << num << std::endl;
   }
 
   if (wakati) {

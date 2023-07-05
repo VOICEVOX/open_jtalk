@@ -128,7 +128,8 @@ int CharProperty::id(const char *key) const {
 
 bool CharProperty::compile(const char *cfile,
                            const char *ufile,
-                           const char *ofile) {
+                           const char *ofile,
+                           bool quiet) {
   scoped_fixed_array<char, BUF_SIZE> line;
   scoped_fixed_array<char *, 512> col;
   size_t id = 0;
@@ -140,8 +141,10 @@ bool CharProperty::compile(const char *cfile,
   std::istream *is = &ifs;
 
   if (!ifs) {
-    std::cerr << cfile
-              << " is not found. minimum setting is used" << std::endl;
+    if (!quiet) {
+      std::cerr << cfile
+                << " is not found. minimum setting is used" << std::endl;
+    }
     is = &iss;
   }
 
@@ -215,8 +218,9 @@ bool CharProperty::compile(const char *cfile,
   std::istream *is2 = &ifs2;
 
   if (!ifs2) {
-    std::cerr << ufile
-              << " is not found. minimum setting is used." << std::endl;
+    if (!quiet)
+      std::cerr << ufile
+                << " is not found. minimum setting is used." << std::endl;
     is2 = &iss2;
   }
 

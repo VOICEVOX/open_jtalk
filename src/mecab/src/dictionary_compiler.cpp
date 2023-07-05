@@ -115,8 +115,7 @@ class DictionaryComplier {
       if (opt_charcategory || opt_unknown) {
         CharProperty::compile(DCONF(CHAR_PROPERTY_DEF_FILE),
                               DCONF(UNK_DEF_FILE),
-                              OCONF(CHAR_PROPERTY_FILE),
-                              opt_quiet);
+                              OCONF(CHAR_PROPERTY_FILE));
       }
 
       if (opt_unknown) {

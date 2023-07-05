@@ -128,8 +128,7 @@ int CharProperty::id(const char *key) const {
 
 bool CharProperty::compile(const char *cfile,
                            const char *ufile,
-                           const char *ofile,
-                           bool quiet) {
+                           const char *ofile) {
   scoped_fixed_array<char, BUF_SIZE> line;
   scoped_fixed_array<char *, 512> col;
   size_t id = 0;

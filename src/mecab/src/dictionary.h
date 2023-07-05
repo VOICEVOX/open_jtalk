@@ -72,8 +72,7 @@ class Dictionary {
   static bool assignUserDictionaryCosts(
       const Param &param,
       const std::vector<std::string> &dics,
-      const char *output,  // outputs
-      bool quiet = false);
+      const char *output);  // outputs
 
 
   const char *what() { return what_.str(); }

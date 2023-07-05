@@ -134,8 +134,7 @@ void Dictionary::close() {
 bool Dictionary::assignUserDictionaryCosts(
     const Param &param,
     const std::vector<std::string> &dics,
-    const char *output,
-    bool quiet) {
+    const char *output) {
   Connector matrix;
   DictionaryRewriter rewriter;
   DecoderFeatureIndex fi;

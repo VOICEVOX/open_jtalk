@@ -140,7 +140,7 @@ bool CharProperty::compile(const char *cfile,
   std::istream *is = &ifs;
 
   if (!ifs) {
-    if (!quiet) {
+    if (!MeCab::quiet_mode) {
       std::cerr << cfile
                 << " is not found. minimum setting is used" << std::endl;
     }
@@ -217,7 +217,7 @@ bool CharProperty::compile(const char *cfile,
   std::istream *is2 = &ifs2;
 
   if (!ifs2) {
-    if (!quiet)
+    if (!MeCab::quiet_mode)
       std::cerr << ufile
                 << " is not found. minimum setting is used." << std::endl;
     is2 = &iss2;

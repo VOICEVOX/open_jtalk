@@ -278,6 +278,8 @@ bool escape_csv_element(std::string *w) {
 }
 
 int progress_bar(const char* message, size_t current, size_t total) {
+  if (MeCab::quiet_mode)
+    return 1;
   static char bar[] = "###########################################";
   static int scale = sizeof(bar) - 1;
   static int prev = 0;

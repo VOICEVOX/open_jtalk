@@ -253,9 +253,10 @@ class DictionaryGenerator {
       gencid(it->c_str(), &rewrite, &cid);
     }
 
-    std::cout << "emitting "
-              << OCONF(LEFT_ID_FILE) << "/ "
-              << OCONF(RIGHT_ID_FILE) << std::endl;
+    if (!MeCab::quiet_mode)
+      std::cout << "emitting "
+                << OCONF(LEFT_ID_FILE) << "/ "
+                << OCONF(RIGHT_ID_FILE) << std::endl;
 
     cid.build();
     cid.save(OCONF(LEFT_ID_FILE), OCONF(RIGHT_ID_FILE));

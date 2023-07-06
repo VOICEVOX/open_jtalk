@@ -38,7 +38,7 @@ typedef unsigned __int64 uint64_t;
 
 namespace MeCab {
 
-extern thread_local bool quiet_mode;
+extern bool quiet_mode;
 
 class Param;
 

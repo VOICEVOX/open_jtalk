@@ -21,7 +21,7 @@
 
 namespace MeCab {
 
-thread_local bool quiet_mode = false;
+bool quiet_mode = false;
 
 class DictionaryComplier {
  public:

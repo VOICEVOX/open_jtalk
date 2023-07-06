@@ -51,7 +51,7 @@ class DictionaryComplier {
       { "posid",     'p',  0,   0,   "assign Part-of-speech id" },
       { "node-format", 'F', 0,  "STR",
         "use STR as the user defined node format" },
-      { "quiet",     'q',  0,   0,   "don't print progresses or errors"  },
+      { "quiet",     'q',  0,   0,   "don't print progress"  },
       { "version",   'v',  0,   0,   "show the version and exit."  },
       { "help",      'h',  0,   0,   "show this help and exit."  },
       { 0, 0, 0, 0 }

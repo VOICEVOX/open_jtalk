@@ -48,7 +48,7 @@ class DictionaryGenerator {
     CHECK_DIE(ifs) << "no such file or directory: " << filename;
     scoped_fixed_array<char, BUF_SIZE> line;
     if (!MeCab::quiet_mode)
-      std::cout << "reaading " << filename << " ... " << std::flush;
+      std::cout << "reading " << filename << " ... " << std::flush;
     size_t num = 0;
     std::string feature, ufeature, lfeature, rfeature;
     char *col[8];

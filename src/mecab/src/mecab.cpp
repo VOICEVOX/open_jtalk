@@ -76,7 +76,7 @@ BOOL Mecab_initialize(Mecab *m)
 
 BOOL Mecab_load(Mecab *m, const char *dicdir)
 {
-    return Mecab_load_with_userdic(m, dicdir, NULL);
+   return Mecab_load_with_userdic(m, dicdir, NULL);
 }
 
 void Mecab_print_load_error(const char *dicdir, const char *userdic) {
@@ -94,7 +94,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
    int argc;
    if (userdic == NULL) {
       argc = 3;
-    } else {
+   } else {
       argc = 5;
    }
    char **argv;

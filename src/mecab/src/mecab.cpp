@@ -125,6 +125,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
 
    if(model == NULL) {
       fprintf(stderr, "%s", error);
+      free(error);
       return FALSE;
    }
 
@@ -132,6 +133,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
    if(tagger == NULL) {
       delete model;
       fprintf(stderr, "%s", error);
+      free(error);
       return FALSE;
    }
 
@@ -140,6 +142,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
       delete model;
       delete tagger;
       fprintf(stderr, "%s", error);
+      free(error);
       return FALSE;
    }
 

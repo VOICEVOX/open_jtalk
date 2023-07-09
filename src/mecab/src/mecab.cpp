@@ -116,6 +116,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
    free(argv);
 
    char *error;
+   error = (char *) malloc(sizeof(char) * (64 + strlen(dicdir) + (userdic == NULL ? 0 : strlen(userdic))));
    if (userdic == NULL) {
       sprintf(error, "ERROR: Mecab_load() in mecab.cpp: Cannot open %s.\n", dicdir);
    } else {
@@ -141,6 +142,8 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
       fprintf(stderr, "%s", error);
       return FALSE;
    }
+
+   free(error);
 
    m->model = (void *) model;
    m->tagger = (void *) tagger;

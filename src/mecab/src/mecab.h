@@ -1591,6 +1591,7 @@ typedef struct _Mecab{
 
 BOOL Mecab_initialize(Mecab *m);
 BOOL Mecab_load(Mecab *m, const char *dicdir);
+BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic);
 BOOL Mecab_analysis(Mecab *m, const char *str);
 BOOL Mecab_print(Mecab *m);
 int Mecab_get_size(Mecab *m);

@@ -82,9 +82,11 @@ BOOL Mecab_load(Mecab *m, const char *dicdir)
 BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
 {
    int i;
-   int argc = 5;
+   int argc;
    if (userdic == NULL) {
       argc = 3;
+    } else {
+      argc = 5;
    }
    char **argv;
 
@@ -114,7 +116,7 @@ BOOL Mecab_load_with_userdic(Mecab *m, const char *dicdir, const char *userdic)
    free(argv);
 
    char *error;
-   if (userdic != NULL) {
+   if (userdic == NULL) {
       sprintf(error, "ERROR: Mecab_load() in mecab.cpp: Cannot open %s.\n", dicdir);
    } else {
       sprintf(error, "ERROR: Mecab_load() in mecab.cpp: Cannot open %s or %s.\n", dicdir, userdic);

@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 2.6)
 
 # set library version
 set(OPEN_JTALK_VERSION 1.10)
+set(CMAKE_CXX_STANDARD 14)
 set(PACKAGE "open_jtalk")
 set(PACKAGE_BUGREPORT "https://github.com/r9y9/open_jtalk/")
 set(PACKAGE_NAME "open_jtalk")

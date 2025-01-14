@@ -105,7 +105,7 @@ template <class T> class Mmap {
     }
 
 #if 0 /* for Open JTalk */
-    hFile = ::CreateFileA(filename, mode1, FILE_SHARE_READ, 0,
+    hFile = ::CreateFileA(filename, mode1, FILE_SHARE_READ | FILE_SHARE_DELETE, 0,
 #else
     hFile = ::CreateFileW(WPATH(filename), mode1, FILE_SHARE_READ | FILE_SHARE_DELETE, 0,
 #endif
